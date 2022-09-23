@@ -27,7 +27,7 @@ const Authentication=(props)=> {
       <View style={styles.buttons}>
         <Button title="SignIn" onPress={() => props.signin(email, password)}/>
         {/* <Button title="Create"  onPress={() => props.createUser(email, password)} /> */}
-        <Button title="Register"  onPress={()=>props.onPress(email,password)} />
+        <Button title="Register"  onPress={props.onPress(email,password)} />
       </View>
     </View>
   );

@@ -7,7 +7,7 @@ import Authenticated from './Authenticated';
 //import { useNavigation } from '@react-navigation/native';
 
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = (props) => {
    
     const [authenticated, setAuthenticated] = useState(false);
 
@@ -49,7 +49,7 @@ const HomeScreen = ({navigation}) => {
         return <Authenticated />;
       }
   return (
-    <Authentication signin={signin}  onPress={()=> navigation.navigate('Registration')}/>
+    <Authentication signin={signin}  onPress={()=> props.navigation.navigate('Registration')}/>
     //<Authentication signin={signin} createUser={createUser} />
   )
 }

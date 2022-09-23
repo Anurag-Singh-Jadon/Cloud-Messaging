@@ -6,8 +6,8 @@ import auth,{firebase} from '@react-native-firebase/auth';
 import Authenticated from './Authenticated';
 
 const Registration = (props) => {
-    const [getEmail, setEmail] = useState('');
-    const [getPassword, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [authenticated, setAuthenticated] = useState(false);
  
 const user = firebase.auth().currentUser;
@@ -32,7 +32,7 @@ const createUser = (email, password) => {
       <Text style={{fontSize:25,fontWeight:"bold"}}>Registation Form</Text>
       <TextInput
         style={styles.input}
-        value={getEmail}
+        value={email}
         onChangeText={setEmail}
         placeholder="E-mail"
         keyboardType='email-address'
@@ -40,7 +40,7 @@ const createUser = (email, password) => {
       />
       <TextInput
         style={styles.input}
-        value={getPassword}
+        value={password}
         onChangeText={setPassword}
         placeholder="Password"
         secureTextEntry={true}
@@ -54,7 +54,7 @@ const createUser = (email, password) => {
       /> */}
       <TouchableOpacity 
       style={{width:'75%',height:'7%',backgroundColor:'blue',alignItems:'center',justifyContent:'center',borderRadius:10,marginTop:12}}
-      createUser={createUser(email,password)}>
+      createUser={createUser()}>
         <Text style={{color:'white'}}>Submit</Text>
       </TouchableOpacity>
            <Text onPress={()=>props.navigation.navigate('HomeScreen')} style={{marginTop:12}}>I have already have an account</Text>

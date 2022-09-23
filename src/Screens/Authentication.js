@@ -1,10 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
-export default function Authentication(props) {
+const Authentication=(props)=> {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  // const navigation = useNavigation();
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Email/Password Authentication</Text>
@@ -24,8 +25,9 @@ export default function Authentication(props) {
         secureTextEntry={true}
       />
       <View style={styles.buttons}>
-        <Button title="Signup" onPress={() => props.signin(email, password)}/>
-        <Button title="Create"  onPress={() => props.createUser(email, password)}/>
+        <Button title="SignIn" onPress={() => props.signin(email, password)}/>
+        {/* <Button title="Create"  onPress={() => props.createUser(email, password)} /> */}
+        <Button title="Register"  onPress={()=>props.onPress(email,password)} />
       </View>
     </View>
   );
@@ -54,5 +56,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-around',
+   
   },
 });
+export default Authentication

@@ -4,82 +4,65 @@ import { requestUserPermission,notificationListener} from './src/Screens/Notific
 import Authentication from './src/Screens/Authentication';
 import auth from '@react-native-firebase/auth';
 import Authenticated from './src/Screens/Authenticated';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-const App = () => {
-  const [authenticated, setAuthenticated] = useState(false);
-  const[getEmail,setEmail]=useState('')
-  useEffect(()=>{
-    requestUserPermission()
-    notificationListener()
-  })
+//import AsyncStorage from '@react-native-async-storage/async-storage';
+import StackNavigation from './src/navigation/StackNavigation'
+//import HomeScreen from './src/Screens/HomeScreen';
 
-  const createUser = (email, password) => {
-    try {
-      auth().createUserWithEmailAndPassword(email,password);
-    } catch (error) {
-      alert(error);
-    }
-  };
-  const signin = (email, password) => {
-    try {
-      auth().signInWithEmailAndPassword(email, password);
-      console.log('My email--->',email)
-      console.log('My Password--->',password)
+const App = () => {
+  // const [authenticated, setAuthenticated] = useState(false);
+ 
+  // useEffect(()=>{
+  //   requestUserPermission()
+  //   notificationListener()
+  // })
+
+  // const createUser = (email, password) => {
+  //   try {
+  //     auth().createUserWithEmailAndPassword(email,password);
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // };
+  // const signin = (email, password) => {
+  //   try {
+  //     auth().signInWithEmailAndPassword(email, password);
+  //     console.log('My email--->',email)
+  //     console.log('My Password--->',password)
       
-      AsyncStorage.setItem('Email', email)
+  //     AsyncStorage.setItem('Email', email)
     
 
-    } catch (error) {
-      alert(error);
-    }
-  };
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // };
+
 
   // auth().onAuthStateChanged((user) => {
   //   if(user) {
   //     setAuthenticated(true);
+  //   } else {
+  //     setAuthenticated(false);
   //   }
   // })
-  auth().onAuthStateChanged((user) => {
-    if(user) {
-      setAuthenticated(true);
-    } else {
-      setAuthenticated(false);
-    }
-  })
-  if (authenticated) {
-    return <Authenticated />;
-  }
-
+  // if (authenticated) {
+  //   return <Authenticated />;
+  // }
+ 
  
     return(
     
       
-  <Authentication signin={signin} createUser={createUser} />
+  // <Authentication signin={signin} createUser={createUser} />
+<StackNavigation/>
+  
   
 
-      // <Authentication createUser={createUser}/>
-    //  <SafeAreaView style={styles.container}>
-    //   <View style={styles.container}>
-    //     <Text style={styles.titleText}>
-    //       Send Notification to React Native App
-    //     </Text>
-    //     <Text style={styles.textStyle}>using</Text>
-        
-        
-    //     <Text style={styles.titleText}>
-    //       Firebase Cloud Messaging
-    //     </Text>
-    //   </View>
-    //   <Text
-    //     style={{
-    //       fontSize: 16,
-    //       textAlign: 'center',
-    //       color: 'white',
-    //     }}>
-    //     www.aboutreact.com
-    //   </Text>
-    // </SafeAreaView>
+     
   );
+
+
+
 };
  
 const styles = StyleSheet.create({
